@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>NodeJS WebSocket Server</title>
+</head>
+
+<body>
+    <h1>Message from socket server</h1>
+    <div>
+        <button id="btnStart">Start socket</button>
+        <button id="btnStop">Stop</button>
+
+    </div>
+    <div id="resultTxt" style="background-color: #FFFAFA; padding: 20px;"></div>
+    <script>
+        let ws;
+        const onStart = () => {
+            ws = new WebSocket("ws://localhost:1001");
+            ws.addEventListener("open", () => {
+                console.log("We are connected");
+                ws.send(JSON.stringify({ data: 'subscribe', interval: 1000 }));
+            });
+
+            ws.addEventListener('message', function (event) {
+                let str = document.getElementById('resultTxt').innerHTML || '';
+                console.log(event.data);
+                str += `${event.data}<br>-----------<br>`
+                document.getElementById('resultTxt').innerHTML = str;
+            });
+        }
+        const onStop = () => {
+            if (ws) ws.close();
+        }
+        const startBtn = document.getElementById('btnStart')
+        const stopBtn = document.getElementById('btnStop')
+        startBtn.addEventListener('click', onStart)
+        stopBtn.addEventListener('click', onStop)
+
+
+
+
+    </script>
+</body>
+
+</html>

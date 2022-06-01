@@ -1,0 +1,32 @@
+{
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "Sample socket server for mock utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"npm run start-client",
+    "start-client":"npx serve",
+    "server":"node server",
+    "client":"npx serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkrishnan-codes/socket.git"
+  },
+  "keywords": [
+    "socket",
+    "mock",
+    "websocket"
+  ],
+  "author": "Manu Krishnan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mkrishnan-codes/socket/issues"
+  },
+  "homepage": "https://github.com/mkrishnan-codes/socket#readme",
+  "dependencies": {
+    "serve": "^13.0.2",
+    "ws": "^8.7.0"
+  }
+}
